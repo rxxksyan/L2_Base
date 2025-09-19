@@ -1,0 +1,7 @@
+function ipv4Parser(ip, mask) {
+    const a = ip.split('.').map(Number);
+    const b = mask.split('.').map(Number);
+    const net = a.map((n, i) => n & b[i]);
+    const host = a.map((n, i) => n & ~b[i]);
+    return [net.join('.'), host.join('.')];
+}

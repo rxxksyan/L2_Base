@@ -1,0 +1,19 @@
+function hasTwoCubeSums(n) {
+    let found = 0;
+    
+    for (let x = 1; x * x * x < n; x++) {
+        let cubeX = x * x * x;
+        let left = n - cubeX;
+        let y = Math.round(Math.cbrt(left));
+        let cubeY = y * y * y;
+        
+        if (cubeX + cubeY === n && x < y) {
+            found++;
+            if (found >= 2) {
+                return true;
+            }
+        }
+    }
+    
+    return false;
+}

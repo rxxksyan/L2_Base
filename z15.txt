@@ -1,0 +1,24 @@
+function howManyTimes(startTime, endTime) {
+    const begin = new Date(startTime);
+    const finish = new Date(endTime);
+    let total = 0;
+
+    for (let tick = begin.getTime(); tick < finish.getTime(); tick += 1000) {
+        const moment = new Date(tick);
+        const h = moment.getHours();
+        const m = moment.getMinutes();
+        const s = moment.getSeconds();
+
+        if (m === 0) {
+            const chime = h % 12 || 12;
+            if (s < chime) {
+                total += 1;
+            }
+        } else if (m === 30 && s === 0) {
+            total += 1;
+        }
+    }
+
+    return total;
+}
+

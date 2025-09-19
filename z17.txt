@@ -1,0 +1,13 @@
+function cache(fn) {
+  const m = new Map();
+
+  return function(...args) {
+    const key = JSON.stringify(args);
+    if (m.has(key)) {
+      return m.get(key);
+    }
+    const result = fn(...args);
+    m.set(key, result);
+    return result;
+  };
+}

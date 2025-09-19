@@ -1,0 +1,13 @@
+function solution(str) {
+    const result = [];
+    for (let i = 0; i < str.length; i += 2) {
+        let pair = str[i];
+        if (i + 1 < str.length) {
+            pair += str[i + 1];
+        } else {
+            pair += '_';
+        }
+        result.push(pair);
+    }
+    return result;
+}
